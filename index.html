@@ -126,8 +126,14 @@
       filter: drop-shadow(0 1.4cqw 2.2cqw rgba(92, 60, 18, 0.28));
       transform: rotate(-1.4deg);
     }
-    body.is-open .note {
-      animation: noteDrop 1.1s 0.5s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+    .ink-char { opacity: 0; }
+    body.is-open .ink-char {
+      animation: inkAppear 0.45s ease-out forwards;
+      animation-delay: calc(var(--ink-delay) * 1ms + 1100ms);
+    }
+    @keyframes inkAppear {
+      from { opacity: 0; filter: blur(1.2px); }
+      to   { opacity: 1; filter: blur(0); }
     }
     .note::before {
       content: '';
@@ -138,10 +144,6 @@
         rgba(240, 228, 198, 0.95);
       clip-path: var(--torn-edge);
       transform: rotate(4.2deg);
-    }
-    @keyframes noteDrop {
-      from { opacity: 0; transform: translateY(-4cqw) rotate(-5deg); }
-      to   { opacity: 1; transform: translateY(0) rotate(-1.4deg); }
     }
 
     .paper {
@@ -402,6 +404,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .card, .note, .sparkle, .petal, .envelope, .music-toggle.is-spinning { animation: none; }
+      .ink-char, body.is-open .ink-char { opacity: 1; animation: none; }
       .petal { display: none; }
       .sparkle { opacity: 0.6; }
     }
@@ -553,6 +556,47 @@
     `;
     effectsLayer.appendChild(petal);
   }
+
+  const splitIntoGraphemes = (text) => {
+    if ('Segmenter' in Intl) {
+      return Array.from(new Intl.Segmenter('vi', { granularity: 'grapheme' }).segment(text), (part) => part.segment);
+    }
+    return Array.from(text.normalize('NFC'));
+  };
+
+  const pauseAfterCharacterMs = { ',': 260, ';': 260, '.': 420, '!': 420, '?': 420 };
+  const pauseBetweenBlocksMs = 480;
+  let handwritingClockMs = 0;
+
+  const prepareHandwriting = (block, msPerCharacter) => {
+    const textNodes = [];
+    const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach((textNode) => {
+      const collapsedText = textNode.textContent.replace(/\s+/g, ' ');
+      const inkedFragment = document.createDocumentFragment();
+      splitIntoGraphemes(collapsedText).forEach((character) => {
+        if (character === ' ') {
+          inkedFragment.append(' ');
+          handwritingClockMs += msPerCharacter;
+          return;
+        }
+        const inkChar = document.createElement('span');
+        inkChar.className = 'ink-char';
+        inkChar.textContent = character;
+        inkChar.style.setProperty('--ink-delay', handwritingClockMs);
+        inkedFragment.append(inkChar);
+        handwritingClockMs += msPerCharacter + (pauseAfterCharacterMs[character] || 0);
+      });
+      textNode.replaceWith(inkedFragment);
+    });
+
+    handwritingClockMs += pauseBetweenBlocksMs;
+  };
+
+  document.querySelectorAll('.poem p, .wish').forEach((block) => prepareHandwriting(block, 42));
+  prepareHandwriting(document.querySelector('.sig-script'), 95);
 
   const envelopeStage = document.getElementById('envelopeStage');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -463,7 +463,7 @@
   <p class="open-hint">Chạm vào phong bì để mở thiệp</p>
 </div>
 
-<audio id="cardMusic" src="co-va-me.mp3#t=26" preload="auto"></audio>
+<audio id="cardMusic" src="co-va-me.mp3" preload="auto" loop></audio>
 
 <div class="card" role="img" aria-label="Thiệp Ngày Nhà Giáo Việt Nam 20/11">
   <div class="effects" id="effects"></div>
@@ -562,27 +562,6 @@
 
   const cardMusic = document.getElementById('cardMusic');
   const musicToggle = document.getElementById('musicToggle');
-  const musicStartSeconds = 26;
-
-  let isWaitingForMusicStart = true;
-
-  const seekToMusicStart = () => {
-    const hasMetadata = cardMusic.readyState >= HTMLMediaElement.HAVE_METADATA;
-    if (!isWaitingForMusicStart || !hasMetadata || cardMusic.seeking) return;
-    if (cardMusic.currentTime >= musicStartSeconds - 0.5) {
-      isWaitingForMusicStart = false;
-      return;
-    }
-    const seekableRanges = cardMusic.seekable;
-    const canSeekToStart = seekableRanges.length > 0
-      && seekableRanges.end(seekableRanges.length - 1) > musicStartSeconds;
-    if (canSeekToStart) cardMusic.currentTime = musicStartSeconds;
-  };
-
-  ['loadedmetadata', 'canplay', 'playing', 'timeupdate', 'progress'].forEach((eventName) => {
-    cardMusic.addEventListener(eventName, seekToMusicStart);
-  });
-
   const showMusicState = (isPlaying) => {
     musicToggle.setAttribute('aria-pressed', String(isPlaying));
     musicToggle.setAttribute('aria-label', isPlaying ? 'Tắt nhạc' : 'Bật nhạc');
@@ -590,16 +569,11 @@
   };
 
   const playMusic = () => {
-    seekToMusicStart();
     cardMusic.play().catch(() => showMusicState(false));
   };
 
   cardMusic.addEventListener('play', () => showMusicState(true));
   cardMusic.addEventListener('pause', () => showMusicState(false));
-  cardMusic.addEventListener('ended', () => {
-    cardMusic.currentTime = musicStartSeconds;
-    cardMusic.play();
-  });
 
   musicToggle.addEventListener('click', () => {
     if (cardMusic.paused) playMusic();

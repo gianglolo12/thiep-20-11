@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Con gửi mẹ Huế một tấm thiệp 20/11</title>
+  <meta name="description" content="Mở phong bì để xem thiệp chào ngày Nhà giáo Việt Nam 20/11." />
+  <meta name="theme-color" content="#efe3c8" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:title" content="Con gửi mẹ Huế một tấm thiệp 20/11" />
+  <meta property="og:description" content="Mở phong bì để xem thiệp chào ngày Nhà giáo Việt Nam 20/11." />
+  <meta property="og:url" content="https://gianglolo12.github.io/thiep-20-11/v2/" />
+  <meta property="og:image" content="https://gianglolo12.github.io/thiep-20-11/og-envelope.jpg" />
+  <meta property="og:image:secure_url" content="https://gianglolo12.github.io/thiep-20-11/og-envelope.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Phong bì thư niêm sáp đỏ, ghi Gửi mẹ Huế" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://gianglolo12.github.io/thiep-20-11/og-envelope.jpg" />
+
+  <link rel="preload" as="image" href="collage.jpg" />
+  <link rel="preload" as="image" href="teacher.webp" />
+  <link rel="preload" as="image" href="kids.webp" />
+  <link rel="preload" as="image" href="book-red.webp" />
+  <link rel="preload" as="image" href="book-green.webp" />
+  <link rel="preload" as="image" href="cloud.webp" />
+  <link rel="preload" as="image" href="bouquet.webp" />
+  <link rel="preload" as="image" href="dog.webp" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Dancing+Script:wght@400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #efe3c8 url('../nen.jpg') center / cover no-repeat;
+      font-family: 'Cormorant Garamond', serif;
+      overflow: hidden;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -40px;
+      background: url('poster.jpg') center / cover no-repeat;
+      filter: blur(30px) saturate(1.05);
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      z-index: 0;
+    }
+    body.is-open::before { opacity: 0.55; }
+
+    .card {
+      container-type: inline-size;
+      position: relative;
+      z-index: 1;
+      width: min(100vw, 100svh * 0.5625);
+      aspect-ratio: 1152 / 2048;
+      overflow: hidden;
+      background: #efe3c8 url('../nen.jpg') center / cover no-repeat;
+      box-shadow: 0 20px 60px rgba(90, 56, 0, 0.35);
+      visibility: hidden;
+    }
+    body.is-open .card {
+      visibility: visible;
+      animation: cardReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(40px) scale(0.95); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .card img {
+      position: absolute;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    .collage {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cloud {
+      z-index: 2;
+      left: -18.49%;
+      top: 21%;
+      width: 65.36%;
+      filter: drop-shadow(0 0.6cqw 0.8cqw rgba(110, 72, 12, 0.25));
+    }
+    body.is-open .cloud {
+      animation:
+        cloudArrive 1.6s 0.35s cubic-bezier(0.22, 1, 0.36, 1) both,
+        cloudFloat 6s 1.95s ease-in-out infinite;
+    }
+    @keyframes cloudArrive {
+      from { opacity: 0; transform: translateX(-24%); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes cloudFloat {
+      0%, 100% { transform: translate(0, 0); }
+      50%      { transform: translate(2.2cqw, -1cqw); }
+    }
+
+    .figure-clip {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      clip-path: polygon(0 0, 100% 0, 100% 97.6%, 0 95.3%);
+      pointer-events: none;
+    }
+    .teacher {
+      left: 44.7%;
+      top: 42.48%;
+      width: 44.1%;
+      transform-origin: 50% 100%;
+      filter: drop-shadow(0 0 0.35cqw rgba(255, 252, 240, 0.9)) drop-shadow(0 1.2cqw 1.6cqw rgba(70, 45, 10, 0.28));
+    }
+    body.is-open .teacher {
+      animation:
+        teacherArrive 1.3s 0.7s cubic-bezier(0.22, 1, 0.36, 1) both,
+        teacherSway 5.5s 2s ease-in-out infinite;
+    }
+    @keyframes teacherArrive {
+      from { opacity: 0; transform: translateY(6%); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes teacherSway {
+      0%, 100% { transform: rotate(0deg); }
+      50%      { transform: rotate(0.8deg); }
+    }
+
+    .kids-group {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+    }
+    body.is-open .kids-group {
+      animation: kidsArrive 1.1s 1.15s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+    }
+    @keyframes kidsArrive {
+      from { opacity: 0; transform: translateY(4%); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .kids {
+      left: 2.17%;
+      top: 63.72%;
+      width: 93.4%;
+    }
+
+    .book-art {
+      transform-origin: 50% 72%;
+      filter: drop-shadow(0 0 0.3cqw rgba(255, 222, 120, 0.4)) drop-shadow(0 0 0 rgba(255, 246, 205, 0));
+    }
+    .book-art-red   { left: 15.538%; top: 81.885%; width: 18.837%; }
+    .book-art-green { left: 38.108%; top: 80.078%; width: 17.535%; }
+    body.is-open .book-art {
+      animation:
+        bookWiggle 2.8s 2.6s ease-in-out infinite,
+        bookGlow 1.4s 2.6s ease-in-out infinite alternate;
+    }
+    body.is-open .book-art-green { animation-delay: 3.3s, 3s; }
+    @keyframes bookWiggle {
+      0%, 55%, 100% { transform: rotate(0deg) scale(1); }
+      62% { transform: rotate(-6deg) scale(1.05); }
+      69% { transform: rotate(5deg) scale(1.05); }
+      76% { transform: rotate(-3.5deg) scale(1.04); }
+      83% { transform: rotate(2deg) scale(1.02); }
+      90% { transform: rotate(0deg) scale(1); }
+    }
+    @keyframes bookGlow {
+      from { filter: drop-shadow(0 0 0.3cqw rgba(255, 222, 120, 0.4)) drop-shadow(0 0 0 rgba(255, 246, 205, 0)); }
+      to   { filter: drop-shadow(0 0 1.8cqw rgba(255, 210, 90, 0.95)) drop-shadow(0 0 0.6cqw rgba(255, 246, 205, 0.95)); }
+    }
+
+    .book-stars {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+    }
+    .book-stars-red   { left: 10%;  top: 77%;   width: 30%; height: 20%; }
+    .book-stars-green { left: 33%;  top: 75.5%; width: 28%; height: 20%; }
+    body.is-open .book-stars {
+      animation: starsAppear 0.8s 2.4s ease-out forwards;
+    }
+    @keyframes starsAppear {
+      to { opacity: 1; }
+    }
+
+    .star-glint {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.2);
+      animation: starGlint var(--d) ease-in-out var(--delay) infinite;
+    }
+    .star-glint.is-star {
+      font-size: var(--size);
+      line-height: 1;
+      color: #ffe27a;
+      -webkit-text-stroke: 0.04em #e0a52c;
+      text-shadow:
+        0 0 0.2em #fff4c2,
+        0 0 0.5em #ffcf4d,
+        0 0 1em rgba(240, 170, 40, 0.9);
+    }
+    .star-glint.is-flare {
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      background: radial-gradient(circle, #fffef4 0 18%, #ffe9a0 32%, rgba(255, 214, 110, 0.35) 52%, rgba(255, 214, 110, 0) 72%);
+    }
+    .star-glint.is-flare::before,
+    .star-glint.is-flare::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 340%;
+      height: 7%;
+      background: linear-gradient(to right, transparent, #fff3c8 35%, #fffef6 50%, #fff3c8 65%, transparent);
+      transform: translate(-50%, -50%);
+    }
+    .star-glint.is-flare::after {
+      width: 230%;
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+    .star-glint.is-dot {
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      background: #fff8d8;
+      box-shadow: 0 0 0.6cqw 0.2cqw rgba(255, 214, 110, 0.85);
+    }
+    @keyframes starGlint {
+      0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
+      45%      { opacity: 1; transform: translate(-50%, calc(-50% - var(--rise) * 0.5)) scale(1) rotate(18deg); }
+      70%      { opacity: 0.85; transform: translate(-50%, calc(-50% - var(--rise) * 0.8)) scale(0.85) rotate(30deg); }
+    }
+
+    .effects {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      background: radial-gradient(circle, #fffbe6 0%, #ffe9a3 35%, rgba(255, 220, 120, 0) 70%);
+      border-radius: 50%;
+      animation: twinkle var(--d) ease-in-out infinite var(--delay);
+    }
+    .sparkle::before,
+    .sparkle::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 260%; height: 14%;
+      background: linear-gradient(to right, transparent, #fff6cf, transparent);
+      transform: translate(-50%, -50%);
+    }
+    .sparkle::after { transform: translate(-50%, -50%) rotate(90deg); }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+      50%      { opacity: 1; transform: scale(1) rotate(45deg); }
+    }
+
+    .petal {
+      position: absolute;
+      top: -4cqw;
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: fall var(--d) linear infinite var(--delay);
+    }
+    @keyframes fall {
+      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      8%   { opacity: 0.85; }
+      90%  { opacity: 0.85; }
+      100% { transform: translate(var(--drift), 185cqw) rotate(720deg); opacity: 0; }
+    }
+
+    .book-hotspot {
+      position: absolute;
+      z-index: 6;
+      padding: 0;
+      border: 0;
+      border-radius: 1.6cqw;
+      background: transparent;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      visibility: hidden;
+    }
+    .book-red   { left: 16%;   top: 82%;   width: 18%;   height: 11.6%; transform: rotate(-4deg); }
+    .book-green { left: 38.2%; top: 80.3%; width: 15.4%; height: 11.6%; transform: rotate(-3deg); }
+    body.is-open .book-hotspot {
+      visibility: visible;
+    }
+    .book-hotspot:focus-visible {
+      outline: 2px dashed #fff3c4;
+      outline-offset: 0.6cqw;
+    }
+
+    .book-hint {
+      position: absolute;
+      z-index: 6;
+      left: 50%;
+      bottom: 0.9%;
+      transform: translateX(-50%);
+      padding: 0.7cqw 3cqw;
+      border-radius: 99px;
+      background: rgba(252, 244, 222, 0.92);
+      box-shadow: 0 0.5cqw 1.4cqw rgba(92, 60, 18, 0.25);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: max(12px, 3.3cqw);
+      color: #6b4a22;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+    }
+    body.is-open .book-hint {
+      animation: hintIn 0.8s 2.8s ease-out forwards;
+    }
+    body.is-open.has-read-wish .book-hint {
+      animation: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    @keyframes hintIn {
+      from { opacity: 0; transform: translate(-50%, 40%); }
+      to   { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    .wish-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      display: grid;
+      place-items: center;
+      padding: 6cqw;
+      background: rgba(58, 36, 12, 0.38);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .wish-overlay[hidden] { display: none; }
+    .wish-overlay.is-visible { opacity: 1; }
+
+    .wish-note {
+      --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .29 0 0 0 0 .12 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      --torn-edge: polygon(0% 1.2%, 7% 0.2%, 18% 0.9%, 31% 0%, 46% 0.7%, 59% 0.1%, 73% 0.8%, 87% 0%, 100% 0.6%, 99.3% 14%, 100% 31%, 99.4% 49%, 100% 66%, 99.2% 83%, 100% 99.2%, 88% 100%, 74% 99.3%, 57% 100%, 41% 99.4%, 26% 100%, 12% 99.3%, 0% 100%, 0.7% 84%, 0% 67%, 0.6% 48%, 0% 30%, 0.5% 13%);
+      --ink: #5b3a1a;
+      --ink-soft: #7d5a33;
+      --rule: rgba(139, 101, 52, 0.2);
+      position: relative;
+      width: 100%;
+      filter: drop-shadow(0 1.4cqw 2.4cqw rgba(60, 36, 8, 0.4));
+      transform: translate(var(--from-x, 0), var(--from-y, 0)) scale(0.08) rotate(-12deg);
+      opacity: 0;
+      transition:
+        transform 0.7s cubic-bezier(0.34, 1.36, 0.64, 1),
+        opacity 0.3s ease;
+    }
+    .wish-overlay.is-visible .wish-note {
+      transform: translate(0, 0) scale(1) rotate(-1.2deg);
+      opacity: 1;
+    }
+    .wish-note::before {
+      content: '';
+      position: absolute;
+      inset: 2% -2.5% -2.5% 3%;
+      background: var(--paper-grain),
+        radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(160, 116, 52, 0.22) 100%),
+        rgba(240, 228, 198, 0.97);
+      clip-path: var(--torn-edge);
+      transform: rotate(3.2deg);
+    }
+
+    .wish-close {
+      position: absolute;
+      z-index: 2;
+      top: -2.6cqw;
+      right: -1.6cqw;
+      width: 9cqw;
+      min-width: 34px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 2px solid #b8903f;
+      border-radius: 50%;
+      background: #3b2410;
+      color: #f3dfa6;
+      font-size: max(18px, 5cqw);
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 0.6cqw 1.4cqw rgba(40, 24, 6, 0.4);
+    }
+    .wish-close:focus-visible {
+      outline: 2px dashed #fff3c4;
+      outline-offset: 3px;
+    }
+
+    .paper {
+      position: relative;
+      z-index: 1;
+      padding: 7cqw 6cqw 4.6cqw;
+      background:
+        var(--paper-grain),
+        radial-gradient(ellipse at 10% 14%, rgba(196, 150, 78, 0.12), transparent 40%),
+        radial-gradient(ellipse at 90% 86%, rgba(184, 134, 60, 0.14), transparent 44%),
+        radial-gradient(ellipse at 50% 50%, transparent 66%, rgba(176, 128, 58, 0.16) 100%),
+        rgba(252, 246, 230, 0.98);
+      clip-path: var(--torn-edge);
+      color: var(--ink);
+    }
+
+    .letter-date {
+      font-family: 'Dancing Script', cursive;
+      font-size: max(12px, 3.8cqw);
+      color: var(--ink-soft);
+      text-align: right;
+    }
+    .letter-title {
+      margin-top: 2.6cqw;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: max(17px, 6.2cqw);
+      line-height: 1.15;
+      color: #7a4a17;
+    }
+    .flourish {
+      display: block;
+      width: 42%;
+      margin: 0.8cqw auto 2cqw;
+      color: #a77b3c;
+    }
+    .ruled {
+      font-family: 'Dancing Script', cursive;
+      font-size: max(15px, 4.7cqw);
+      line-height: 1.6;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent calc(1lh - 1px),
+        var(--rule) calc(1lh - 1px),
+        var(--rule) 1lh
+      );
+    }
+    .poem {
+      text-align: center;
+      font-weight: 600;
+      color: #6a4219;
+    }
+    .poem + .wish { margin-top: 1lh; }
+    .wish {
+      font-weight: 500;
+      text-indent: 1.4em;
+    }
+    .wish strong { font-weight: 600; color: #7a4a17; }
+
+    .wish-gift {
+      position: absolute;
+      z-index: 3;
+      left: 20%;
+      bottom: -50cqw;
+      width: 60%;
+      transform-origin: 50% 95%;
+      filter: drop-shadow(0 1.2cqw 1.4cqw rgba(60, 20, 10, 0.35));
+      opacity: 0;
+      transform: translateY(18%) scale(0.2) rotate(-14deg);
+      pointer-events: none;
+      visibility: hidden;
+    }
+    .gift-dog {
+      left: 23%;
+      bottom: -38cqw;
+      width: 54%;
+    }
+    .wish-overlay.is-blooming .wish-gift.is-current {
+      visibility: visible;
+      animation:
+        bouquetPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+        bouquetSway 4s 0.9s ease-in-out infinite;
+    }
+    @keyframes bouquetPop {
+      from { opacity: 0; transform: translateY(18%) scale(0.2) rotate(-14deg); }
+      to   { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); }
+    }
+    @keyframes bouquetSway {
+      0%, 100% { opacity: 1; transform: rotate(-2deg); }
+      50%      { opacity: 1; transform: rotate(2deg); }
+    }
+
+    .ink-char { opacity: 0; }
+    .wish-overlay.is-writing .ink-char {
+      animation: inkAppear 0.45s ease-out forwards;
+      animation-delay: calc(var(--ink-delay) * 1ms + 650ms);
+    }
+    @keyframes inkAppear {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .music-toggle {
+      position: absolute;
+      z-index: 6;
+      top: 2.4%;
+      left: 4%;
+      width: 10.5cqw;
+      min-width: 40px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 2px solid #b8903f;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #f7eed6 0 18%, #6b4219 19% 22%, #3b2410 23% 100%);
+      box-shadow: 0 0.8cqw 1.8cqw rgba(70, 45, 10, 0.35);
+      color: #f3dfa6;
+      cursor: pointer;
+    }
+    .music-toggle svg {
+      width: 46%;
+      height: 46%;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+    }
+    .music-toggle:focus-visible {
+      outline: 2px dashed #8c5d22;
+      outline-offset: 4px;
+    }
+    .music-toggle .icon-muted { display: none; }
+    .music-toggle[aria-pressed="false"] .icon-playing { display: none; }
+    .music-toggle[aria-pressed="false"] .icon-muted { display: block; }
+    .music-toggle.is-spinning {
+      animation: vinylSpin 4s linear infinite;
+    }
+    @keyframes vinylSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .envelope-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      padding: 16px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .envelope-stage[hidden] { display: none; }
+
+    .envelope {
+      container-type: inline-size;
+      position: relative;
+      display: block;
+      width: min(86vw, 560px, (100svh - 150px) * 1.5);
+      aspect-ratio: 3 / 2;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      filter: drop-shadow(0 18px 28px rgba(92, 60, 18, 0.32));
+      animation: envelopeBob 3.6s ease-in-out infinite;
+    }
+    .envelope:focus-visible {
+      outline: 2px dashed #8c5d22;
+      outline-offset: 10px;
+      border-radius: 4px;
+    }
+    @keyframes envelopeBob {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50%      { transform: translateY(-1.4cqw) rotate(-0.4deg); }
+    }
+
+    .envelope-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .envelope-back   { z-index: 0; }
+    .envelope-letter { z-index: 1; }
+    .envelope-pocket { z-index: 2; }
+    .envelope-flap   { z-index: 3; transform-origin: 50% 0; }
+
+    .envelope-letter {
+      inset: 5% 6% 6%;
+      width: auto;
+      height: auto;
+      background: #efe3c8 url('poster.jpg') center 12% / cover no-repeat;
+      border: 1.2cqw solid #fbf3df;
+      box-shadow: 0 0 0 1px rgba(150, 110, 50, 0.25);
+    }
+
+    .envelope-cloud {
+      position: absolute;
+      z-index: 4;
+      left: -9%;
+      top: -10%;
+      width: 34%;
+      transform: rotate(-8deg);
+      filter: drop-shadow(0 0.6cqw 0.6cqw rgba(110, 72, 12, 0.3));
+      pointer-events: none;
+    }
+
+    .envelope-address {
+      position: absolute;
+      z-index: 4;
+      left: 0;
+      right: 0;
+      top: 69%;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-weight: 600;
+      font-size: 9.5cqw;
+      line-height: 1;
+      color: #6a4219;
+      transform: rotate(-3deg);
+    }
+
+    .wax-seal {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      top: 57%;
+      width: 19cqw;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      filter: drop-shadow(0 0.6cqw 0.8cqw rgba(70, 20, 8, 0.4));
+    }
+
+    .open-hint {
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(17px, 2.4vw, 22px);
+      color: #6b4a22;
+      text-shadow: 0 1px 0 rgba(255, 248, 230, 0.8);
+    }
+
+    body.is-opening .envelope { animation: none; }
+    body.is-opening .wax-seal {
+      animation: sealBreak 0.45s ease-in forwards;
+    }
+    body.is-opening .envelope-address,
+    body.is-opening .envelope-cloud {
+      animation: fadeAway 0.35s ease-in forwards;
+    }
+    body.is-opening .envelope-flap {
+      animation: flapOpen 0.75s 0.3s cubic-bezier(0.45, 0, 0.25, 1) forwards;
+    }
+    body.is-opening .envelope-letter {
+      animation: letterRise 0.9s 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    body.is-opening .open-hint {
+      animation: fadeAway 0.3s ease-in forwards;
+    }
+    body.is-opening .envelope-stage {
+      animation: stageOut 0.8s 1.85s ease-in forwards;
+      pointer-events: none;
+    }
+    @keyframes sealBreak {
+      40%  { transform: translate(-50%, -50%) rotate(-14deg) scale(1.12); opacity: 1; }
+      100% { transform: translate(-50%, -30%) rotate(-30deg) scale(0.6); opacity: 0; }
+    }
+    @keyframes fadeAway {
+      to { opacity: 0; }
+    }
+    @keyframes flapOpen {
+      0%   { transform: perspective(1200px) rotateX(0deg);   z-index: 3; }
+      49%  { z-index: 3; }
+      50%  { z-index: 0; }
+      100% { transform: perspective(1200px) rotateX(180deg); z-index: 0; }
+    }
+    @keyframes letterRise {
+      to { transform: translateY(-62%); }
+    }
+    @keyframes stageOut {
+      to { opacity: 0; transform: translateY(6%) scale(0.96); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card, body.is-open .card,
+      .envelope, .sparkle, .petal, .music-toggle.is-spinning,
+      body.is-open .cloud, body.is-open .teacher, body.is-open .kids-group,
+      body.is-open .book-art, body.is-open .book-stars, .star-glint { animation: none; }
+      body.is-open .book-stars, .star-glint { opacity: 0.9; }
+      .star-glint { transform: translate(-50%, -50%); }
+      body.is-open .book-hint { animation: none; opacity: 1; }
+      .wish-note { transition: opacity 0.2s ease; }
+      .ink-char, .wish-overlay.is-writing .ink-char { opacity: 1; animation: none; }
+      .wish-overlay.is-blooming .wish-gift.is-current { animation: none; opacity: 1; transform: none; }
+      .petal { display: none; }
+      .sparkle { opacity: 0.6; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="envelope-stage" id="envelopeStage">
+  <button class="envelope" id="envelope" type="button" aria-label="Mở phong bì để xem thiệp">
+    <svg class="envelope-layer envelope-back" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
+      <rect width="300" height="200" rx="5" fill="#d9bf8e"/>
+    </svg>
+
+    <span class="envelope-layer envelope-letter" aria-hidden="true"></span>
+
+    <svg class="envelope-layer envelope-pocket" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="pocketPaper" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#efdcb3"/>
+          <stop offset="1" stop-color="#e8d2a4"/>
+        </linearGradient>
+        <linearGradient id="bottomFlapPaper" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f6e9cb"/>
+          <stop offset="1" stop-color="#f1e0ba"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 0 L150 106 L300 0 V195 Q300 200 295 200 H5 Q0 200 0 195 Z" fill="url(#pocketPaper)"/>
+      <path d="M0 200 L150 100 L300 200 Z" fill="url(#bottomFlapPaper)" stroke="rgba(140, 100, 45, 0.28)" stroke-width="0.8"/>
+    </svg>
+
+    <svg class="envelope-layer envelope-flap" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="flapPaper" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f3e3c0"/>
+          <stop offset="1" stop-color="#e9d4a8"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 2 Q0 0 4 0 H296 Q300 0 300 2 L157 112 Q150 117.5 143 112 Z" fill="url(#flapPaper)" stroke="rgba(140, 100, 45, 0.32)" stroke-width="0.8"/>
+    </svg>
+
+    <img class="envelope-cloud" src="cloud.webp" alt="" aria-hidden="true" />
+
+    <span class="envelope-address" aria-hidden="true">Gửi mẹ Huế</span>
+
+    <svg class="wax-seal" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id="waxColor" cx="0.38" cy="0.32" r="0.75">
+          <stop offset="0" stop-color="#c4553a"/>
+          <stop offset="0.55" stop-color="#9a3320"/>
+          <stop offset="1" stop-color="#6e1f12"/>
+        </radialGradient>
+      </defs>
+      <path d="M50 3 C60 4 63 9 71 9 C80 11 84 18 88 25 C93 33 97 38 96 48 C96 58 93 63 90 71 C86 80 79 85 71 90 C62 95 57 97 48 97 C38 97 33 93 25 89 C17 84 12 79 8 70 C4 61 3 56 4 47 C5 37 9 32 13 25 C18 17 23 12 32 8 C39 4 43 3 50 3 Z" fill="url(#waxColor)"/>
+      <circle cx="50" cy="50" r="31" fill="none" stroke="#5e1a0e" stroke-width="2.2" opacity="0.55"/>
+      <circle cx="50" cy="50" r="31" fill="none" stroke="#e08a6c" stroke-width="0.8" opacity="0.45" transform="translate(-0.8 -0.8)"/>
+      <text x="50" y="58" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-weight="600" font-size="23" fill="#5a170c" opacity="0.85">20/11</text>
+      <text x="49.4" y="57.4" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-weight="600" font-size="23" fill="#e6957a" opacity="0.35">20/11</text>
+    </svg>
+  </button>
+
+  <p class="open-hint">Chạm vào phong bì để mở thiệp</p>
+</div>
+
+<audio id="cardMusic" src="../co-va-me.mp3" preload="auto" loop></audio>
+
+<div class="card" id="card" role="group" aria-label="Thiệp Chào ngày Nhà giáo Việt Nam: cô giáo áo dài trắng mỉm cười bên các bạn nhỏ ôm sách">
+  <img class="collage" src="collage.jpg" alt="" />
+  <img class="cloud" src="cloud.webp" alt="" />
+  <div class="figure-clip">
+    <img class="teacher" src="teacher.webp" alt="" />
+  </div>
+  <div class="kids-group">
+    <img class="kids" src="kids.webp" alt="" />
+    <img class="book-art book-art-red" src="book-red.webp" alt="" />
+    <img class="book-art book-art-green" src="book-green.webp" alt="" />
+    <div class="book-stars book-stars-red" aria-hidden="true"></div>
+    <div class="book-stars book-stars-green" aria-hidden="true"></div>
+  </div>
+  <div class="effects" id="effects"></div>
+
+  <button class="book-hotspot book-red" type="button" data-wish="wishRed" data-gift="giftDog" aria-haspopup="dialog" aria-label="Mở cuốn sách đỏ để đọc lời chúc"></button>
+  <button class="book-hotspot book-green" type="button" data-wish="wishGreen" data-without-poem data-gift="giftBouquet" aria-haspopup="dialog" aria-label="Mở cuốn sách xanh để đọc lời chúc"></button>
+
+  <template id="wishRed">
+    Nhân ngày <strong>20 tháng 11</strong>, con chúc mẹ Huế
+    khỏe mạnh, tươi tắn và có một ngày thật vuiii ạ.
+  </template>
+  <template id="wishGreen">
+    Nhân ngày Nhà giáo, hai con chúc mẹ một ngày <strong>20/11</strong>
+    thật nhiều hoa, nhiều quà và thật nhiều nụ cười ạ.
+  </template>
+  <p class="book-hint" aria-hidden="true">Chạm vào cuốn sách để đọc lời chúc ✨</p>
+
+  <div class="wish-overlay" id="wishOverlay" hidden>
+    <div class="wish-note" id="wishNote" role="dialog" aria-modal="true" aria-labelledby="wishTitle">
+      <button class="wish-close" id="wishClose" type="button" aria-label="Đóng lời chúc">&times;</button>
+      <img class="wish-gift" id="giftBouquet" src="bouquet.webp" alt="Bó hoa tulip hồng và cúc trắng tặng mẹ" />
+      <img class="wish-gift gift-dog" id="giftDog" src="dog.webp" alt="Chú cún ngậm bó hoa hồng tặng mẹ" />
+
+      <div class="paper">
+        <p class="letter-date">Ngày 20 tháng 11 năm 2026</p>
+
+        <h1 class="letter-title" id="wishTitle">Ngày Nhà Giáo Việt Nam</h1>
+        <svg class="flourish" viewBox="0 0 120 12" aria-hidden="true">
+          <path d="M2 7 C 22 1, 34 11, 52 6 S 72 2, 60 7 S 84 12, 118 4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+
+        <div class="ruled">
+          <div class="poem">
+            <p>Muốn sang thì bắc cầu kiều,</p>
+            <p>Muốn con hay chữ thì yêu lấy thầy.</p>
+          </div>
+
+          <p class="wish"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="music-toggle" id="musicToggle" type="button" aria-pressed="true" aria-label="Tắt nhạc">
+    <svg class="icon-playing" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M9 17.5V6.2l10-2.2v11.2a2.8 2.8 0 1 1-1.6-2.5V7.9L10.6 9.4v8.3A2.8 2.8 0 1 1 9 17.5Z"/>
+    </svg>
+    <svg class="icon-muted" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M9 17.5V6.2l10-2.2v11.2a2.8 2.8 0 1 1-1.6-2.5V7.9L10.6 9.4v8.3A2.8 2.8 0 1 1 9 17.5Z" opacity="0.55"/>
+      <path d="M4 4 L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+  const effectsLayer = document.getElementById('effects');
+  const randomBetween = (min, max) => Math.random() * (max - min) + min;
+
+  for (let i = 0; i < 24; i++) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.style.cssText = `
+      left:${randomBetween(2, 96).toFixed(1)}%;
+      top:${randomBetween(2, 60).toFixed(1)}%;
+      --size:${randomBetween(1.2, 2.8).toFixed(2)}cqw;
+      --d:${randomBetween(2.5, 5).toFixed(1)}s;
+      --delay:-${randomBetween(0, 5).toFixed(1)}s;
+    `;
+    effectsLayer.appendChild(sparkle);
+  }
+
+  const glintKinds = ['is-star', 'is-star', 'is-flare', 'is-dot', 'is-dot', 'is-dot'];
+  const glintSizeRangeCqw = { 'is-star': [2.4, 4.4], 'is-flare': [2.6, 4.6], 'is-dot': [0.5, 1.1] };
+  document.querySelectorAll('.book-stars').forEach((starField) => {
+    for (let i = 0; i < 22; i++) {
+      const kind = glintKinds[i % glintKinds.length];
+      const [minSize, maxSize] = glintSizeRangeCqw[kind];
+      const glint = document.createElement('span');
+      glint.className = `star-glint ${kind}`;
+      if (kind === 'is-star') glint.textContent = '★';
+      glint.style.cssText = `
+        --x:${randomBetween(4, 96).toFixed(1)}%;
+        --y:${randomBetween(4, 96).toFixed(1)}%;
+        --size:${randomBetween(minSize, maxSize).toFixed(2)}cqw;
+        --d:${randomBetween(1.4, 2.8).toFixed(2)}s;
+        --delay:-${randomBetween(0, 2.8).toFixed(2)}s;
+        --rise:${randomBetween(0.5, 2.5).toFixed(2)}cqw;
+      `;
+      starField.appendChild(glint);
+    }
+  });
+
+  const petalColors = ['#f6c945', '#f2b134', '#ffe08a', '#e9a23b', '#f7d774'];
+  for (let i = 0; i < 18; i++) {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    const petalWidth = randomBetween(1.6, 3.2);
+    petal.style.cssText = `
+      left:${randomBetween(0, 100).toFixed(1)}%;
+      width:${petalWidth.toFixed(2)}cqw;
+      height:${(petalWidth * 0.6).toFixed(2)}cqw;
+      background:${petalColors[Math.floor(Math.random() * petalColors.length)]};
+      --d:${randomBetween(9, 18).toFixed(1)}s;
+      --delay:-${randomBetween(0, 18).toFixed(1)}s;
+      --drift:${randomBetween(-12, 12).toFixed(1)}cqw;
+    `;
+    effectsLayer.appendChild(petal);
+  }
+
+  const envelopeStage = document.getElementById('envelopeStage');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealCardDelayMs = prefersReducedMotion ? 0 : 1850;
+  const removeStageDelayMs = prefersReducedMotion ? 0 : 2700;
+  let hasOpened = false;
+
+  const cardMusic = document.getElementById('cardMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  const showMusicState = (isPlaying) => {
+    musicToggle.setAttribute('aria-pressed', String(isPlaying));
+    musicToggle.setAttribute('aria-label', isPlaying ? 'Tắt nhạc' : 'Bật nhạc');
+    musicToggle.classList.toggle('is-spinning', isPlaying);
+  };
+
+  const playMusic = () => {
+    cardMusic.play().catch(() => showMusicState(false));
+  };
+
+  cardMusic.addEventListener('play', () => showMusicState(true));
+  cardMusic.addEventListener('pause', () => showMusicState(false));
+
+  musicToggle.addEventListener('click', () => {
+    if (cardMusic.paused) playMusic();
+    else cardMusic.pause();
+  });
+
+  const openCard = () => {
+    if (hasOpened) return;
+    hasOpened = true;
+    playMusic();
+    document.body.classList.add('is-opening');
+    setTimeout(() => document.body.classList.add('is-open'), revealCardDelayMs);
+    setTimeout(() => { envelopeStage.hidden = true; }, removeStageDelayMs);
+  };
+
+  envelopeStage.addEventListener('click', openCard);
+
+  const splitIntoGraphemes = (text) => {
+    if ('Segmenter' in Intl) {
+      return Array.from(new Intl.Segmenter('vi', { granularity: 'grapheme' }).segment(text), (part) => part.segment);
+    }
+    return Array.from(text.normalize('NFC'));
+  };
+
+  const pauseAfterCharacterMs = { ',': 260, ';': 260, '.': 420, '!': 420, '?': 420 };
+  const pauseBetweenBlocksMs = 420;
+  let handwritingClockMs = 0;
+  const wishPaper = document.querySelector('.wish-note .paper');
+  const blankLetterHtml = wishPaper.innerHTML;
+
+  const prepareHandwriting = (block, msPerCharacter) => {
+    const textNodes = [];
+    const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach((textNode) => {
+      const collapsedText = textNode.textContent.replace(/\s+/g, ' ');
+      const inkedFragment = document.createDocumentFragment();
+      splitIntoGraphemes(collapsedText).forEach((character) => {
+        if (character === ' ') {
+          inkedFragment.append(' ');
+          handwritingClockMs += msPerCharacter;
+          return;
+        }
+        const inkChar = document.createElement('span');
+        inkChar.className = 'ink-char';
+        inkChar.textContent = character;
+        inkChar.style.setProperty('--ink-delay', handwritingClockMs);
+        inkedFragment.append(inkChar);
+        handwritingClockMs += msPerCharacter + (pauseAfterCharacterMs[character] || 0);
+      });
+      textNode.replaceWith(inkedFragment);
+    });
+
+    handwritingClockMs += pauseBetweenBlocksMs;
+  };
+
+  const writeLetterFor = (book) => {
+    wishPaper.innerHTML = blankLetterHtml;
+    wishPaper.querySelector('.wish').innerHTML = document.getElementById(book.dataset.wish).innerHTML;
+    if ('withoutPoem' in book.dataset) wishPaper.querySelector('.poem').remove();
+    handwritingClockMs = 0;
+    wishPaper.querySelectorAll('.poem p, .wish').forEach((block) => prepareHandwriting(block, 38));
+  };
+
+  const card = document.getElementById('card');
+  const wishOverlay = document.getElementById('wishOverlay');
+  const wishNote = document.getElementById('wishNote');
+  const wishClose = document.getElementById('wishClose');
+  const bookHotspots = document.querySelectorAll('.book-hotspot');
+  const wishCloseDurationMs = prefersReducedMotion ? 0 : 450;
+  let bookThatOpenedWish = null;
+  let hideWishTimer = null;
+  let revealGiftTimer = null;
+  const handwritingStartMs = 650;
+  const lastInkFadeMs = 450;
+
+  const aimNoteAtBook = (book) => {
+    const cardBox = card.getBoundingClientRect();
+    const bookBox = book.getBoundingClientRect();
+    const bookCenterX = bookBox.left + bookBox.width / 2 - cardBox.left;
+    const bookCenterY = bookBox.top + bookBox.height / 2 - cardBox.top;
+    wishNote.style.setProperty('--from-x', `${bookCenterX - cardBox.width / 2}px`);
+    wishNote.style.setProperty('--from-y', `${bookCenterY - cardBox.height / 2}px`);
+  };
+
+  const openWish = (book) => {
+    clearTimeout(hideWishTimer);
+    clearTimeout(revealGiftTimer);
+    bookThatOpenedWish = book;
+    document.body.classList.add('has-read-wish');
+    aimNoteAtBook(book);
+    wishOverlay.classList.remove('is-visible', 'is-writing', 'is-blooming');
+    writeLetterFor(book);
+    wishOverlay.hidden = false;
+    void wishOverlay.offsetWidth;
+    wishOverlay.classList.add('is-visible', 'is-writing');
+    wishClose.focus({ preventScroll: true });
+
+    document.querySelectorAll('.wish-gift').forEach((gift) => {
+      gift.classList.toggle('is-current', gift.id === book.dataset.gift);
+    });
+    if (book.dataset.gift) {
+      const letterFinishedMs = prefersReducedMotion
+        ? 0
+        : handwritingStartMs + handwritingClockMs - pauseBetweenBlocksMs + lastInkFadeMs;
+      revealGiftTimer = setTimeout(() => wishOverlay.classList.add('is-blooming'), letterFinishedMs);
+    }
+  };
+
+  const closeWish = () => {
+    if (wishOverlay.hidden) return;
+    clearTimeout(revealGiftTimer);
+    if (bookThatOpenedWish) aimNoteAtBook(bookThatOpenedWish);
+    wishOverlay.classList.remove('is-visible');
+    hideWishTimer = setTimeout(() => {
+      wishOverlay.hidden = true;
+      wishOverlay.classList.remove('is-writing', 'is-blooming');
+    }, wishCloseDurationMs);
+    if (bookThatOpenedWish) bookThatOpenedWish.focus({ preventScroll: true });
+  };
+
+  bookHotspots.forEach((book) => book.addEventListener('click', () => openWish(book)));
+  wishClose.addEventListener('click', closeWish);
+  wishOverlay.addEventListener('click', (event) => {
+    if (!wishNote.contains(event.target)) closeWish();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeWish();
+  });
+</script>
+
+</body>
+</html>
